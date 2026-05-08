@@ -9,6 +9,7 @@ module.exports = (env, argv) => {
     entry: {
       background: './src/background/background.ts',
       content: './src/content/content.tsx',
+      'content.css': './src/content/content.css',
       popup: './src/popup/popup.tsx',
       offscreen: './src/offscreen/offscreen.ts'
     },
@@ -26,10 +27,26 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.css$/,
-          use: [
-            'style-loader',
-            'css-loader',
-            'postcss-loader'
+          oneOf: [
+            {
+              test: /content\.css$/,
+              use: [
+                'style-loader',
+                'css-loader',
+                'postcss-loader'
+              ],
+              type: 'asset/resource',
+              generator: {
+                filename: '[name][ext]'
+              }
+            },
+            {
+              use: [
+                'style-loader',
+                'css-loader',
+                'postcss-loader'
+              ]
+            }
           ]
         },
         {
@@ -68,6 +85,7 @@ module.exports = (env, argv) => {
       new CopyWebpackPlugin({
         patterns: [
           { from: 'manifest.json', to: 'manifest.json' },
+          { from: 'icons', to: 'icons', noErrorOnMissing: true },
           { from: 'src/assets', to: 'assets', noErrorOnMissing: true },
           { from: 'src/models', to: 'models', noErrorOnMissing: true },
           { from: 'src/workers', to: 'workers', noErrorOnMissing: true }

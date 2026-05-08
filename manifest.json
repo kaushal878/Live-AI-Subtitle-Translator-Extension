@@ -15,7 +15,7 @@
     "https://youtube.com/*"
   ],
   "background": {
-    "service_worker": "dist/background.js",
+    "service_worker": "background.js",
     "type": "module"
   },
   "content_scripts": [
@@ -24,13 +24,13 @@
         "https://www.youtube.com/*",
         "https://youtube.com/*"
       ],
-      "js": ["dist/content.js"],
-      "css": ["dist/content.css"],
+      "js": ["content.js"],
+      "css": ["content.css"],
       "run_at": "document_idle"
     }
   ],
   "action": {
-    "default_popup": "dist/popup.html",
+    "default_popup": "popup.html",
     "default_title": "Live AI Subtitle Translator",
     "default_icon": {
       "16": "icons/icon16.png",
