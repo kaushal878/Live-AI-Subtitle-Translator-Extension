@@ -281,7 +281,7 @@ npm run format
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the KAUSHAL License - see the [KAUSHAL](LICENSE) file for details.
 
 ## Support
 
